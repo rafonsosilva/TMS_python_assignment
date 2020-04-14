@@ -7,7 +7,7 @@ class Address:
         self.city = city
         self.postalCode = postalCode
     def __str__(self):
-        out = "{} {} {} {}".format(self.addressLine1, self.addressLine2, self.city, self.postalCode)
+        out = "{} | {} | {} | {}".format(self.addressLine1, self.addressLine2, self.city, self.postalCode)
         return out
 
 class Person(metaclass = ABCMeta):
@@ -24,19 +24,20 @@ class Person(metaclass = ABCMeta):
 class Student(Person):
     def __init__(self, fName, mName, lName, dateOfBirth, address, email, 
         studentStatus, mainGuardian, secondaryGuardian, schoolCurrEnrolled,
-        gradeLevel, subjectsForHelp, needsOneOnOne, hasDisability, 
-        disabilityDetails, availableDays, preferredSchools):
+        gradeLevel, subjectsForHelp, needsOneOnOne, availableDays, preferredSchools):
             super().__init__(fName, mName, lName, dateOfBirth, address, email)
             self.studentStatus = studentStatus
             self.mainGuardian = mainGuardian
             self.secondaryGuardian = secondaryGuardian
             self.schoolCurrEnrolled = schoolCurrEnrolled
-            self.disabilityDetails = disabilityDetails
+            self.gradeLevel = gradeLevel
+            self.subjectForHelp = subjectsForHelp
+            self.needsOneOnOne = needsOneOnOne
             self.availableDays = availableDays
             self.preferredSchools = preferredSchools
     
     def __str__(self):
-        output = "{} {} {} {} {} {} {} {} {}".format(
+        output = "{} | {} | {} | {} | {} | {} | {} | {} | {}".format(
             self.firstName, self.middleName, self.lastName,
             self.dateOfBirth.strftime("%x"),
             self.address,
