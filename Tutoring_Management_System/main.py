@@ -1,21 +1,36 @@
-from objects import Student, Guardian, Address
+from objects import *
+from functions import *
 import datetime
+import sqlite3
+import sys
+import os
+from contextlib import closing
 
 def main():
-    guardAddress = Address("Carlos Olympio Tostes, 479", "", "Araraquara", "14807-210")
-    stAddress = Address("5 Michael Power Place", "309", "Etobicoke", "M9A0A3")
+    # DB_FILE = "C:/Users/rafon/Documents/GBC/COMP2152_Python/Database/tms_database.db"
+    # conn = sqlite3.connect(DB_FILE)
+    
+    # with closing(conn.cursor()) as c:
+    #     query = '''SELECT Students.student_id,
+	#                 Students.first_name, 
+	#                 Students.last_name, 
+	#                 Students.grade_level, 
+	#                 Guardians.First_Name,
+	#                 Guardians.last_name
+    #             FROM Students
+	#                 INNER JOIN Family ON Family.student_id = Students.student_id
+	#                 INNER JOIN Guardians ON Family.guardian_id = Guardians.guardian_id
+    #             WHERE Students.student_id = 2;'''
+    #     c.execute(query)
+    #     student = c.fetchone()
+    
+    # print("Student id: "+str(student[0]))
+    # print("Student name: "+str(student[1])+str(student[2]))
 
-    guard1 = Guardian("John", "", "Afonso", datetime.date(1956, 2, 29),
-        guardAddress, "adao@fs.com", "father", "416-123-1234")
+    main_menu()
+    
 
-    guard2 = Guardian("Mary", "", "Silva", datetime.date(1960, 6, 23),
-        guardAddress, "mary@fs.com", "mother", "416-123-1234")
 
-    st = Student("Rafael", "Afonso", "Silva", datetime.date(1985, 9, 1),
-        stAddress, "rafonso@gmail.com", "active",
-        guard1, guard2, "School Name GBC", 5, ["Math, English"], True,
-        False, "", "Saturday", ["Bloor Collegiate Institute"])
-    print(st)
 
 
 if __name__ == "__main__":

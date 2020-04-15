@@ -1,7 +1,7 @@
 from abc import ABCMeta
 
 class Person(metaclass = ABCMeta):
-    currPersonId = 1000000
+    currPersonId = 1000
     def __init__(self, fName, lName, email):
         self.personId = self.currPersonId+1
         self.firstName = fName
@@ -9,12 +9,20 @@ class Person(metaclass = ABCMeta):
         self.email = email
 
 class Student(Person):
-    def __init__(self, fName, lName, email, gradeLevel):
+    def __init__(
+        self, fName, lName, email, mainGuardian, 
+        gradeLevel, subjectsForHelp, availableDays, preferredSchools
+    ):
             super().__init__(fName, lName, email)
             self.gradeLevel = gradeLevel
+            self.mainGuardian = mainGuardian
+            self.subjectsForHelp = subjectsForHelp
+            self.availableDays = availableDays
+            self.preferredSchools = preferredSchools
 
     def __str__(self):
-        output = "{} | {} | {} | {}".format(
+        output = "{} | {} | {} | {} | {}".format(
+            self.personId,
             self.firstName, 
             self.lastName, 
             self.email, 
@@ -23,10 +31,11 @@ class Student(Person):
         return output
 
 class Guardian(Person):
-    def __init__(self, fName, lName, email, guardianType, isMainContact):
+    def __init__(self, fName, lName, email, guardianType, isMainContact, students_list):
             super().__init__(fName, lName, email)
             self.guardianType = guardianType
             self.isMainContact = isMainContact
+            self.students_list = students_list
 
     def __str__(self):
         output = "{} | {} | {} | {} | {}".format(
@@ -37,7 +46,7 @@ class Guardian(Person):
         )
         return output
 
-class Tutors(Person):
+class Tutor(Person):
     def __init__(self, fName, lName, email):
         super().__init__(fName, lName, email)
 
@@ -49,7 +58,7 @@ class Tutors(Person):
         )
         return output
 
-class Subjects():
+class Subject():
     def __init__(self, subjectName):
         self.subjectName = subjectName
 
@@ -57,7 +66,7 @@ class Subjects():
         output = "{}".format(self.subjectName)
         return output
 
-class Weekdays():
+class Weekday():
     def __init__(self, weekdayName):
         self.weekdayName = weekdayName
     
@@ -65,7 +74,7 @@ class Weekdays():
         output = "{}".format(self.weekdayName)
         return output
 
-class Schools():
+class School():
     def __init__(self, schoolName, schoolPhone, schoolEmail):
         self.schoolName = schoolName
         self.schoolPhone = schoolPhone
