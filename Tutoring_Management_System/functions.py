@@ -24,5 +24,3 @@ def students_menu():
             break
         else:
             print("Not a valid option. Please try again.")
-
-def add
