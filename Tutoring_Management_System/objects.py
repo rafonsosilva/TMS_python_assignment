@@ -4,7 +4,7 @@ from contextlib import closing
 import TableIt #source: https://github.com/CodeForeverAndEver/TableIt
 
 
-DB_FILE = "C:/Users/rafon/Documents/GBC/COMP2152_Python/Database/tutoringManagementSystem.sqlite3"
+DB_FILE = "C:/Users/rafon/Documents/GBC/COMP2152_Python/Database/sqlite/tutoringManagementSystem.sqlite3"
 conn = sqlite3.connect(DB_FILE)
 
 def searchGuardians(name=""):
